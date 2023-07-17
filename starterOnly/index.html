@@ -5,7 +5,6 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="formValidator.js" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -61,7 +60,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData">
@@ -205,6 +203,7 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
+                id="btn-test"
               />
             </form>
           </div>
@@ -217,5 +216,6 @@
       </p>
     </footer>
     <script src="modal.js"></script>
+    <script src="formValidator.js"></script>
   </body>
 </html>
