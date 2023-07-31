@@ -10,7 +10,7 @@ form.addEventListener("submit", (event) => {
     let nbTournois = document.getElementById("quantity");
     let ca = document.getElementById("checkbox1");
     let formValide = true;
-    let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+    let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     let regexQuantity = /[0-9]+/i;
 
     if (prenom.value.length < 2) {
@@ -29,7 +29,8 @@ form.addEventListener("submit", (event) => {
         nom.classList.remove("erreur");
     }
 
-    if (regexMail.test(email) == false) {
+
+    if (regexMail.test(email.value) === false) {
         email.classList.add("erreur");
         erreurAlert('email non valide', email);
         formValide = false;
