@@ -10,7 +10,7 @@ form.addEventListener("submit", (event) => {
     let nbTournois = document.getElementById("quantity");
     let ca = document.getElementById("checkbox1");
     let formValide = true;
-    let regexMail = /[A-Za-z0-9]+\.[A-Za-z0-9]+@[A-Za-z0-9]+\.[A-Za-z]+/i;
+    let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     let regexQuantity = /[0-9]+/i;
 
     if (prenom.value.length < 2) {
@@ -29,15 +29,13 @@ form.addEventListener("submit", (event) => {
         nom.classList.remove("erreur");
     }
 
-    // if (regexMail.test(email)) {
-    //     email.classList.add("erreur");
-    //     erreurAlert('email non valide', email);
-    //     formValide = false;
-    //     console.log('blabla');
-    // } else {
-    //     email.classList.remove("erreur");
-    //     console.log('blablaOK');
-    // }
+    if (regexMail.test(email) == false) {
+        email.classList.add("erreur");
+        erreurAlert('email non valide', email);
+        formValide = false;
+    } else {
+        email.classList.remove("erreur");
+    }
 
     if (regexQuantity.test(nbTournois)) {
         nbTournois.classList.add("erreur");
