@@ -527,3 +527,12 @@ footer {
   }
 }
 
+.erreur {
+  border: 2px solid #FF4E60;
+}
+
+.erreur-text {
+  font-size: 0.6rem;
+  color: #FF4E60; 
+  font-weight: 400; 
+}
