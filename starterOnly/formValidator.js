@@ -19,6 +19,7 @@ form.addEventListener("submit", (event) => {
         formValide = false;
     } else {
         prenom.classList.remove("erreur");
+        erreurAlertRemove(prenom);
     }
 
     if (nom.value.length < 2) {
@@ -27,8 +28,8 @@ form.addEventListener("submit", (event) => {
         formValide = false;
     } else {
         nom.classList.remove("erreur");
+        erreurAlertRemove(nom);
     }
-
 
     if (regexMail.test(email.value) === false) {
         email.classList.add("erreur");
@@ -36,14 +37,16 @@ form.addEventListener("submit", (event) => {
         formValide = false;
     } else {
         email.classList.remove("erreur");
+        erreurAlertRemove(email);
     }
 
-    if (regexQuantity.test(nbTournois)) {
+    if (regexQuantity.test(nbTournois.value)) {
         nbTournois.classList.add("erreur");
         erreurAlert('Chiffre', nbTournois);
         formValide = false;
     } else {
         nbTournois.classList.remove("erreur");
+        erreurAlertRemove(nbTournois);
     }
 
     if (formValide == false) {
@@ -55,17 +58,23 @@ form.addEventListener("submit", (event) => {
 });
 
 function erreurAlert(message, select) {
-    // console.log(select.parentNode.children);
-    // Creer une fonction qui empeche le doublon du message erreur
+    console.log(select.parentNode.children);
+    if (!select.parentNode.children[4]) {
+        let newDiv = document.createElement("div");
+        let newText = document.createElement("p");
 
-    let newDiv = document.createElement("div");
-    let newText = document.createElement("p");
+        newText.textContent = message;
+        newDiv.classList.add('erreur-container');
+        newText.classList.add('erreur-text');
 
-    newText.textContent = message;
-    newDiv.classList.add('erreur-container');
-    newText.classList.add('erreur-text');
+        newDiv.appendChild(newText);
 
-    newDiv.appendChild(newText);
-
-    select.parentNode.appendChild(newDiv);
+        select.parentNode.appendChild(newDiv);
+    }
 };
+
+function erreurAlertRemove(select) {
+    if (select.parentNode.children[4]) {
+        select.parentNode.removeChild(select.parentNode.children[4]);
+    }
+}
