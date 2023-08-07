@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+console.log(formData);
 
 modalbg.style.display = "none";
 
@@ -25,5 +26,7 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+
 
 

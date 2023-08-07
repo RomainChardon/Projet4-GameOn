@@ -528,6 +528,9 @@ footer {
   }
 }
 
+
+/* ERREUR TEXTE FORMULAIRE */
+
 .erreur {
   border: 2px solid #FF4E60;
 }
@@ -536,4 +539,33 @@ footer {
   font-size: 0.6rem;
   color: #FF4E60; 
   font-weight: 400; 
+}
+
+/* PAGE VALIDATION */
+
+.bground-valid {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.content-valid {
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
 }

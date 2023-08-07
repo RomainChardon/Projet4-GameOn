@@ -9,9 +9,10 @@ form.addEventListener("submit", (event) => {
     let date = document.getElementById("birthdate");
     let nbTournois = document.getElementById("quantity");
     let ca = document.getElementById("checkbox1");
+    // let validPage =  document.getElementById('modal-valid');
     let formValide = true;
     let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    let regexQuantity = /[0-9]+/i;
+    let regexQuantity = /^\d{1,3}$/gm;
 
     if (prenom.value.length < 2) {
         prenom.classList.add("erreur");
@@ -40,25 +41,46 @@ form.addEventListener("submit", (event) => {
         erreurAlertRemove(email);
     }
 
-    if (regexQuantity.test(nbTournois.value)) {
+    if (date.value == '') {
+        date.classList.add("erreur");
+        erreurAlert('Saisir votre date de naissance', date);
+        formValide = false;
+    } else {
+        date.classList.remove("erreur");
+        erreurAlertRemove(date);
+    }
+
+    if (regexQuantity.test(nbTournois.value) === false) {
         nbTournois.classList.add("erreur");
-        erreurAlert('Chiffre', nbTournois);
+        erreurAlert('Saisir un chiffre', nbTournois);
         formValide = false;
     } else {
         nbTournois.classList.remove("erreur");
         erreurAlertRemove(nbTournois);
     }
 
+    if (ca.checked === false) {
+        ca.classList.add("erreur");
+        erreurAlert('Vous devez accepter les conditions d\'utilidation', ca);
+        formValide = false;
+    }
+
     if (formValide == false) {
         // empeche le refresh
         event.preventDefault();
-        console.log('nope');
+    } else {
+        // validPage.style.display = "flex";
     }
 
 });
 
+function closeModalValid() {
+    validPage.style.display = "none";
+}
+
+// Affiche les messages d'erreur
 function erreurAlert(message, select) {
-    console.log(select.parentNode.children);
+    // Si le message d'erreur n'existe pas
     if (!select.parentNode.children[4]) {
         let newDiv = document.createElement("div");
         let newText = document.createElement("p");
@@ -73,6 +95,7 @@ function erreurAlert(message, select) {
     }
 };
 
+// Supprime les messages d'erreur
 function erreurAlertRemove(select) {
     if (select.parentNode.children[4]) {
         select.parentNode.removeChild(select.parentNode.children[4]);
