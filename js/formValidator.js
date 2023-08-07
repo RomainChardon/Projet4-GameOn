@@ -8,6 +8,7 @@ form.addEventListener("submit", (event) => {
     let email = document.getElementById("email");
     let date = document.getElementById("birthdate");
     let nbTournois = document.getElementById("quantity");
+    let location = document.querySelector(".checkbox-input[name='location']:checked");
     let ca = document.getElementById("checkbox1");
     // let validPage =  document.getElementById('modal-valid');
     let formValide = true;
@@ -59,6 +60,8 @@ form.addEventListener("submit", (event) => {
         erreurAlertRemove(nbTournois);
     }
 
+    // console.log(location.value);
+
     if (ca.checked === false) {
         ca.classList.add("erreur");
         erreurAlert('Vous devez accepter les conditions d\'utilidation', ca);
@@ -69,6 +72,8 @@ form.addEventListener("submit", (event) => {
         // empeche le refresh
         event.preventDefault();
     } else {
+        event.preventDefault();
+        alert('test');
         // validPage.style.display = "flex";
     }
 
@@ -80,8 +85,13 @@ function closeModalValid() {
 
 // Affiche les messages d'erreur
 function erreurAlert(message, select) {
+    let verif = Array.from(select.parentNode.children);
+    let test = verif.filter((el) => {
+        return Array.from(el.classList).includes("erreur-container");
+    })
+
     // Si le message d'erreur n'existe pas
-    if (!select.parentNode.children[4]) {
+    if (test.length === 0) {
         let newDiv = document.createElement("div");
         let newText = document.createElement("p");
 
@@ -97,7 +107,10 @@ function erreurAlert(message, select) {
 
 // Supprime les messages d'erreur
 function erreurAlertRemove(select) {
-    if (select.parentNode.children[4]) {
+    let verif = Array.from(select.parentNode.children);
+    let test = verif.filter((el) => Array.from(el.classList).includes("erreur-container"));
+
+    if (test.length !== 0) {
         select.parentNode.removeChild(select.parentNode.children[4]);
     }
 }
