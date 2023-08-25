@@ -60,7 +60,7 @@ form.addEventListener("submit", (event) => {
         erreurAlertRemove(nbTournois);
     }
 
-    // console.log(location.value);
+    //console.log(location.value);
 
     if (ca.checked === false) {
         ca.classList.add("erreur");
@@ -73,15 +73,12 @@ form.addEventListener("submit", (event) => {
         event.preventDefault();
     } else {
         event.preventDefault();
-        alert('test');
-        // validPage.style.display = "flex";
+        modalValid.style.display = "flex";
     }
 
 });
 
-function closeModalValid() {
-    validPage.style.display = "none";
-}
+
 
 // Affiche les messages d'erreur
 function erreurAlert(message, select) {
