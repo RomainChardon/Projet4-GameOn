@@ -11,9 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const modalValid = document.querySelector(".bground-valid");
-
-console.log(formData);
+const modalValid = document.getElementById("modal-valid");
 
 modalbg.style.display = "none";
 

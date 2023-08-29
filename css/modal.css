@@ -541,35 +541,32 @@ footer {
   font-weight: 400; 
 }
 
-.ca-content {
-  
-}
 
 
 /* PAGE VALIDATION */
 
-.bground-valid {
+.modal-body-valid {
   display: none;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  height: 100%;
+  justify-content: center;
+  position: absolute;
+  background: #232323;
   width: 100%;
-  overflow: auto;
+  height: 100%;
+  z-index: 999;
 }
 
-.content-valid {
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
+.valid-close {
+  position: absolute;
+  bottom: 2rem;
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
   color: #fff;
-  padding-top: 10px;
+  cursor: pointer;
+  border: 0;
 }
