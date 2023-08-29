@@ -10,14 +10,13 @@ form.addEventListener("submit", (event) => {
     let nbTournois = document.getElementById("quantity");
     let location = document.querySelector(".checkbox-input[name='location']:checked");
     let ca = document.getElementById("checkbox1");
-    // let validPage =  document.getElementById('modal-valid');
     let formValide = true;
     let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     let regexQuantity = /^\d{1,3}$/gm;
 
     if (prenom.value.length < 2) {
         prenom.classList.add("erreur");
-        erreurAlert('Minimum 2 caractères !', prenom);
+        erreurAlert('Veuillez entrer 2 caractères ou plus pour le champ du prénom.', prenom);
         formValide = false;
     } else {
         prenom.classList.remove("erreur");
@@ -26,7 +25,7 @@ form.addEventListener("submit", (event) => {
 
     if (nom.value.length < 2) {
         nom.classList.add("erreur");
-        erreurAlert('Minimum 2 caractères !', nom);
+        erreurAlert('Veuillez entrer 2 caractères ou plus pour le champ du nom.', nom);
         formValide = false;
     } else {
         nom.classList.remove("erreur");
@@ -35,7 +34,7 @@ form.addEventListener("submit", (event) => {
 
     if (regexMail.test(email.value) === false) {
         email.classList.add("erreur");
-        erreurAlert('email non valide', email);
+        erreurAlert('Veuillez entrer une adresse mail valide.', email);
         formValide = false;
     } else {
         email.classList.remove("erreur");
@@ -44,7 +43,7 @@ form.addEventListener("submit", (event) => {
 
     if (date.value == '') {
         date.classList.add("erreur");
-        erreurAlert('Saisir votre date de naissance', date);
+        erreurAlert('Vous devez entrer votre date de naissance.', date);
         formValide = false;
     } else {
         date.classList.remove("erreur");
@@ -53,19 +52,28 @@ form.addEventListener("submit", (event) => {
 
     if (regexQuantity.test(nbTournois.value) === false) {
         nbTournois.classList.add("erreur");
-        erreurAlert('Saisir un chiffre', nbTournois);
+        erreurAlert('Vous devez entrer le nombre de tournois auquel vous avez participé.', nbTournois);
         formValide = false;
     } else {
         nbTournois.classList.remove("erreur");
         erreurAlertRemove(nbTournois);
     }
 
-    //console.log(location.value);
 
-    if (ca.checked === false) {
-        ca.classList.add("erreur");
-        erreurAlert('Vous devez accepter les conditions d\'utilidation', ca);
+    if (location) {
+        erreurAlertRemove(document.getElementById('location1'));
+    } else {
+        erreurAlert('Vous devez choisir une option.', document.getElementById('location1'));
         formValide = false;
+    }
+
+    if (ca.checked != true) {
+        ca.classList.add("erreur");
+        erreurAlert('Vous devez vérifier que vous acceptez les termes et conditions.', ca);
+        formValide = false;
+    } else {
+        ca.classList.remove("erreur");
+        erreurAlertRemove(ca);
     }
 
     if (formValide == false) {
