@@ -139,6 +139,12 @@ main {
 
 /* Modal form */
 
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .button {
   background: #fe142f;
   margin-top: 0.5em;
