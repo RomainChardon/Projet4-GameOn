@@ -557,6 +557,10 @@ footer {
   z-index: 999;
 }
 
+.modal-body-valid h3 {
+  text-align: center;
+}
+
 .valid-close {
   position: absolute;
   bottom: 2rem;
