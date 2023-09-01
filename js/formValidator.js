@@ -82,6 +82,12 @@ form.addEventListener("submit", (event) => {
     } else {
         event.preventDefault();
         modalValid.style.display = "flex";
+        prenom.value = '';
+        nom.value = '';
+        email.value = '';
+        date.value = '';
+        nbTournois.value = '';
+        location.value = '';
     }
 
 });
@@ -110,12 +116,13 @@ function erreurAlert(message, select) {
     }
 };
 
+
 // Supprime les messages d'erreur
 function erreurAlertRemove(select) {
     let verif = Array.from(select.parentNode.children);
     let test = verif.filter((el) => Array.from(el.classList).includes("erreur-container"));
 
     if (test.length !== 0) {
-        select.parentNode.removeChild(select.parentNode.children[4]);
+        select.parentNode.removeChild(test[0]);
     }
 }
