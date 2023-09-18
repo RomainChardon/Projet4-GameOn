@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  let x = document.getElementById("myTopnav");
   if (xclassName === "topnav") {
     x.class.Name += " responsive";
   } else {

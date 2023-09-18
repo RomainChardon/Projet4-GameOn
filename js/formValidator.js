@@ -13,7 +13,9 @@ form.addEventListener("submit", (event) => {
     let formValide = true;
     let regexMail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
     let regexQuantity = /^\d{1,3}$/gm;
+    let regexDate = /^\d{4}-\d{2}-\d{2}$/;
 
+    console.log(regexDate.test('2023-09-20'));
     if (prenom.value.length < 2) {
         prenom.classList.add("erreur");
         erreurAlert('Veuillez entrer 2 caractères ou plus pour le champ du prénom.', prenom);
@@ -41,7 +43,7 @@ form.addEventListener("submit", (event) => {
         erreurAlertRemove(email);
     }
 
-    if (date.value == '') {
+    if (regexDate.test(date.value) === false) {
         date.classList.add("erreur");
         erreurAlert('Vous devez entrer votre date de naissance.', date);
         formValide = false;
